@@ -1,15 +1,17 @@
+import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
 
     private final AnimalBase application;
+    private AnimalCSVObject animalCSVObject = new AnimalCSVObject();
 
     public UserInterface(AnimalBase application) {
         this.application = application;
     }
 
-    public void start() {
+    public void start() throws FileNotFoundException {
         System.out.println("Welcome to ANIMALBASE 2022");
         System.out.println("==========================");
         System.out.println("Java edition\n");
@@ -22,8 +24,8 @@ public class UserInterface {
                 case 3 -> sort();
                 case 4 -> create();
                 case 5 -> delete();
-                case 6 -> load();
-                case 7 -> save();
+                case 6 -> animalCSVObject.load();
+                case 7 -> animalCSVObject.save();
             }
         }
     }
@@ -155,19 +157,6 @@ public class UserInterface {
         } else {
             System.out.println("Animal with name '" + name + "' does not exist, and cannot be deleted");
         }
-    }
-
-    private void load() {
-        System.out.println("Loading the database ...");
-        application.loadDatabase();
-        System.out.println("Done!");
-    }
-
-    private void save() {
-        System.out.println("Saving the database ...");
-        application.saveDatabase();
-        System.out.println("Saving database completed succesfully");
-        System.out.println("You can now exit the application");
     }
 
 }

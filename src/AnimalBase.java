@@ -1,4 +1,8 @@
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class AnimalBase {
 
@@ -8,12 +12,12 @@ public class AnimalBase {
         animals = new ArrayList<>();
     }
 
-    public void start() {
+    public void start() throws FileNotFoundException {
         UserInterface ui = new UserInterface(this);
         ui.start();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         AnimalBase app = new AnimalBase();
         app.start();
     }
@@ -57,12 +61,5 @@ public class AnimalBase {
     }
 
 
-    public void loadDatabase() {
-        System.err.println("LOAD not yet implemented!");
-    }
-
-    public void saveDatabase() {
-        System.err.println("SAVE not yet implemented!");
-    }
 
 }
